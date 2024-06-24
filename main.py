@@ -5,6 +5,15 @@ import string
 import json
 
 
+# ---------------------------- FIND PASSWORD ------------------------------- #
+def find_password():
+    website_name = website_input.get()
+    with open("data.json", "r") as file:
+        data = json.load(file)
+        if website_name in data:
+            messagebox.showinfo(title=website_name, message="Please dont leave the field empty")
+
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 def generate_password():
@@ -67,16 +76,19 @@ logo_img = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_img)
 canvas.grid(column=1, row=0)
 
-# Website Label And Entry
+# Website Label, Entry And Search Button
 website_label = Label(text='Website:')
 website_label.grid(column=0, row=1)
 
-website_input = Entry(width=35)
+website_input = Entry(width=21)
 website_input.focus()
-website_input.grid(column=1, row=1, columnspan=2)
+website_input.grid(column=1, row=1)
+
+search_button = Button(text='Search', command=find_password)
+search_button.grid(column=2, row=1)
 
 # Email/Username Label And Entry
-email_label = Label(text='Email/Username:')
+email_label = Label(text='Email:')
 email_label.grid(column=0, row=2)
 
 email_input = Entry(width=35)
@@ -94,7 +106,7 @@ password_button = Button(text='Generate Password', command=generate_password)
 password_button.grid(column=2, row=3)
 
 # Add Button
-add_button = Button(text='Add', width=36, command=save)
+add_button = Button(text='Add', width=35, command=save)
 add_button.grid(column=1, row=4, columnspan=2)
 
 window.mainloop()
