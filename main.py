@@ -5,7 +5,7 @@ import string
 import json
 
 
-# --------------------------- PASSWORD GENERATOR ------------------------------ #
+# ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 def generate_password():
     password_input.delete(0, END)
